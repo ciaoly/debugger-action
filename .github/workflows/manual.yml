@@ -32,4 +32,11 @@ jobs:
     - name: Setup Debug Session
       #uses: csexton/debugger-action@master
       run: bash -e ./script.sh
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist-without-markdown
+        path: |
+          /tmp/dist
+          !dist/**/*.md
       
