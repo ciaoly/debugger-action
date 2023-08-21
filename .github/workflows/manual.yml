@@ -9,7 +9,7 @@ on:
     # Inputs the workflow accepts.
     inputs:
       tag:
-        description: 'You can rename this workflow. Or leave this blank for default'
+        description: 'You can rename this workflow.'
         default: 'Manual workflow'
         required: false
       keep-alive:
@@ -17,6 +17,13 @@ on:
         description: 'Do you want to keep the session alive? y/N'
         # Default value if no value is explicitly provided
         default: 'n'
+        # Input has to be provided for the workflow to run
+        required: true
+      dist-path:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'The path within artifacts for archiving'
+        # Default value if no value is explicitly provided
+        default: '/home/runner/work/tmp/dist'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -32,6 +39,8 @@ jobs:
     - name: "Create a keep-alive file."
       if: ${{ github.event.inputs.keep-alive == 'y' }}
       run: touch /tmp/keepalive
+    - name: "Make directory for dist"
+      run: "mkdir -p ${{ github.event.inputs.dist-path }}"
     - uses: actions/checkout@v2
     - name: Setup Debug Session
       #uses: csexton/debugger-action@master
@@ -44,6 +53,6 @@ jobs:
 #        name: dist-without-markdown
         name: dist
         path: |
-          /tmp/dist
+          ${{ github.event.inputs.dist-path }}
  #         !dist/**/*.md
       

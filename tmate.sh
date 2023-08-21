@@ -19,6 +19,11 @@ fi
 # Generate ssh key if needed
 [ -e ~/.ssh/id_rsa ] || ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
 
+if [ ! -d /home/runner/work/tmp/ ]; then 
+  mkdir -p /home/runner/work/tmp/;
+fi
+
+cd /home/runner/work/tmp/
 # Run deamonized tmate
 echo Running tmate...
 tmate -S /tmp/tmate.sock new-session -d
