@@ -8,6 +8,9 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
+      tag:
+        description: 'Default runner'
+        required: false
       keep-alive:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Do you want to keep the session alive? y/N'
