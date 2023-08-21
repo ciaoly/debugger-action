@@ -27,6 +27,10 @@ There is a global timeout after 15 minutes. This will close any open ssh session
 touch /tmp/keepalive
 ```
 
+## Archive production artifacts
+
+You can put your production artifacts under the `dist-path` (default */home/runner/work/tmp/dist*). While you closed this session, your artifacts will be archived automatically.
+
 ## Acknowledgments
 
 * [tmate.io](https://tmate.io)
