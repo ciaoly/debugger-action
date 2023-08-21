@@ -23,7 +23,7 @@ on:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'The path within artifacts for archiving'
         # Default value if no value is explicitly provided
-        default: '/home/runner/work/debugger-action/debugger-action/dist'
+        default: '/home/runner/work/tmp/dist'
         # Input has to be provided for the workflow to run
         required: true
 
